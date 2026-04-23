@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC240001000000000000AA01 /* ClockClock24View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC240002000000000000AA02 /* ClockClock24View.swift */; };
+		CC240003000000000000AA03 /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC240004000000000000AA04 /* ScreenSaver.framework */; };
+		CC240005000000000000AA05 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC240006000000000000AA06 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CC240002000000000000AA02 /* ClockClock24View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockClock24View.swift; sourceTree = "<group>"; };
+		CC240004000000000000AA04 /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		CC240006000000000000AA06 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CC240007000000000000AA07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC240008000000000000AA08 /* ClockClock24.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockClock24.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC240009000000000000AA09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC240003000000000000AA03 /* ScreenSaver.framework in Frameworks */,
+				CC240005000000000000AA05 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC24000A000000000000AA0A = {
+			isa = PBXGroup;
+			children = (
+				CC240002000000000000AA02 /* ClockClock24View.swift */,
+				CC240007000000000000AA07 /* Info.plist */,
+				CC24000C000000000000AA0C /* Frameworks */,
+				CC24000B000000000000AA0B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC24000B000000000000AA0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC240008000000000000AA08 /* ClockClock24.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC24000C000000000000AA0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC240004000000000000AA04 /* ScreenSaver.framework */,
+				CC240006000000000000AA06 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC24000D000000000000AA0D /* ClockClock24 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC24000E000000000000AA0E /* Build configuration list for PBXNativeTarget "ClockClock24" */;
+			buildPhases = (
+				CC24000F000000000000AA0F /* Sources */,
+				CC240009000000000000AA09 /* Frameworks */,
+				CC240010000000000000AA10 /* Resources */,
+				CC240011000000000000AA11 /* Install to Screen Savers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClockClock24;
+			productName = ClockClock24;
+			productReference = CC240008000000000000AA08 /* ClockClock24.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC240012000000000000AA12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					CC24000D000000000000AA0D = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = CC240013000000000000AA13 /* Build configuration list for PBXProject "ClockClock24" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC24000A000000000000AA0A;
+			productRefGroup = CC24000B000000000000AA0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC24000D000000000000AA0D /* ClockClock24 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC240010000000000000AA10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC240011000000000000AA11 /* Install to Screen Savers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FULL_PRODUCT_NAME)",
+			);
+			name = "Install to Screen Savers";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(HOME)/Library/Screen Savers/$(FULL_PRODUCT_NAME)",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -rf \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\" \"${HOME}/Library/Screen Savers/\"\necho \"Installed ${FULL_PRODUCT_NAME} to ~/Library/Screen Savers/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC24000F000000000000AA0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC240001000000000000AA01 /* ClockClock24View.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CC240014000000000000AA14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC240015000000000000AA15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CC240016000000000000AA16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ClockClock24;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		CC240017000000000000AA17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ClockClock24;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC24000E000000000000AA0E /* Build configuration list for PBXNativeTarget "ClockClock24" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC240016000000000000AA16 /* Debug */,
+				CC240017000000000000AA17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC240013000000000000AA13 /* Build configuration list for PBXProject "ClockClock24" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC240014000000000000AA14 /* Debug */,
+				CC240015000000000000AA15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC240012000000000000AA12 /* Project object */;
+}
