@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+
+    <title>ClockClock24 2.1</title>
+    <organization>com.yourcompany</organization>
+    <domains enable_currentUserHome="true" enable_localSystem="false"/>
+    <options customize="never" require-scripts="false" hostArchitectures="arm64,x86_64"/>
+
+    <!-- Installer pages -->
+    <welcome    file="welcome.html" mime-type="text/html"/>
+    <readme     file="readme.html"  mime-type="text/html"/>
+
+    <!-- Package reference -->
+    <pkg-ref id="com.yourcompany.ClockClock24" version="2.1">ClockClock24-component.pkg</pkg-ref>
+
+    <!-- Install choices -->
+    <choices-outline>
+        <line choice="com.yourcompany.ClockClock24"/>
+    </choices-outline>
+
+    <choice id="com.yourcompany.ClockClock24"
+            title="ClockClock24 Screen Saver"
+            description="Installs ClockClock24.saver into ~/Library/Screen Savers."
+            start_selected="true"
+            start_enabled="true"
+            start_visible="true">
+        <pkg-ref id="com.yourcompany.ClockClock24"/>
+    </choice>
+
+</installer-gui-script>
