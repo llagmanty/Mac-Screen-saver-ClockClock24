@@ -131,31 +131,40 @@ private func clockwiseAngle(from current: CGFloat, to targetDeg: CGFloat) -> CGF
 
 private typealias ChoreographyPattern = (_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig
 
-/// Sine wave propagating left → right. Hands 180° apart → full rotating bar per clock.
+/// Hour sweeps left → right; minute sweeps right → left at a different speed.
+/// The two waves travel in opposite directions with independent spatial phases.
 private func patternSweepWave(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
-    let a = CGFloat(t * 140 + Double(col) * 45 + sin(t * 1.4 + Double(col) * 0.8) * 60
-                   + Double(row) * 20)
-    return ClockConfig(hours: a, minutes: a + 180)
+    let h = CGFloat(t * 140 + Double(col) *  45 + sin(t * 1.4 + Double(col) * 0.8) * 60
+                   + Double(row) *  20)
+    let m = CGFloat(t * -90 + Double(col) * -40 + sin(t * 1.1 + Double(row) * 1.2) * 55
+                   + Double(row) * -28)
+    return ClockConfig(hours: h, minutes: m)
 }
 
-/// All clocks spin at the same speed; phase offset equals the polar angle from grid centre.
+/// Hour rotates clockwise from the polar angle; minute rotates counter-clockwise
+/// from the inverted polar angle — the two hands open and close like scissors.
 private func patternPinwheel(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
     let base = atan2(Double(col) - 3.5, Double(row) - 1.0) * (180.0 / .pi)
-    let a    = CGFloat(base + t * 80)
-    return ClockConfig(hours: a, minutes: a + 180)
+    let h = CGFloat( base + t *  80)
+    let m = CGFloat(-base + t * -60)
+    return ClockConfig(hours: h, minutes: m)
 }
 
-/// Concentric ripple expanding outward from the grid centre.
+/// Hour ripples outward from centre; minute ripples inward at a different speed.
+/// The two pulses travel through each other in opposite radial directions.
 private func patternRadialPulse(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
     let dist = sqrt(pow(Double(col) - 3.5, 2) + pow(Double(row) - 1.0, 2))
-    let a    = CGFloat(t * 120 - dist * 45)
-    return ClockConfig(hours: a, minutes: a + 180)
+    let h = CGFloat(t *  120 - dist * 45)
+    let m = CGFloat(t * -75  + dist * 60)
+    return ClockConfig(hours: h, minutes: m)
 }
 
-/// Diagonal cascade: each clock offset by its position on the main diagonal.
+/// Hour cascades along the main diagonal; minute cascades along the anti-diagonal.
+/// The crossing wavefronts give each clock a different opening angle.
 private func patternCascade(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
-    let a = CGFloat(t * 100 + Double(col + row * 2) * 28)
-    return ClockConfig(hours: a, minutes: a + 180)
+    let h = CGFloat(t *  100 + Double( col + row * 2) * 28)
+    let m = CGFloat(t * -70  + Double(col * 2 - row)  * 35)
+    return ClockConfig(hours: h, minutes: m)
 }
 
 private let kChoreographyPatterns: [ChoreographyPattern] = [
