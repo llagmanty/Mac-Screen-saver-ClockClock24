@@ -131,39 +131,45 @@ private func clockwiseAngle(from current: CGFloat, to targetDeg: CGFloat) -> CGF
 
 private typealias ChoreographyPattern = (_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig
 
-/// Hour sweeps left → right; minute sweeps right → left at a different speed.
-/// The two waves travel in opposite directions with independent spatial phases.
+// Target rotation speed: 22–36 °/s (one full revolution every 10–16 s).
+// Research on smooth-pursuit eye tracking and kinetic-art perception places
+// the "satisfying" sweet spot here — slow enough to follow, fast enough to
+// feel alive. Above ~40 °/s the eye switches to saccades and the motion
+// starts to feel hectic rather than meditative.
+
+/// Hour sweeps left → right; minute sweeps right → left.
+/// Opposite directions, different speeds, independent sine modulation.
 private func patternSweepWave(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
-    let h = CGFloat(t * 140 + Double(col) *  45 + sin(t * 1.4 + Double(col) * 0.8) * 60
-                   + Double(row) *  20)
-    let m = CGFloat(t * -90 + Double(col) * -40 + sin(t * 1.1 + Double(row) * 1.2) * 55
-                   + Double(row) * -28)
+    let h = CGFloat(t *  36 + Double(col) *  20 + sin(t * 0.5 + Double(col) * 0.8) * 18
+                   + Double(row) *  8)
+    let m = CGFloat(t * -22 + Double(col) * -15 + sin(t * 0.4 + Double(row) * 1.0) * 14
+                   + Double(row) * -10)
     return ClockConfig(hours: h, minutes: m)
 }
 
-/// Hour rotates clockwise from the polar angle; minute rotates counter-clockwise
-/// from the inverted polar angle — the two hands open and close like scissors.
+/// Hour rotates clockwise from polar angle; minute counter-clockwise from the
+/// inverted polar angle — hands open and close like slow scissors.
 private func patternPinwheel(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
     let base = atan2(Double(col) - 3.5, Double(row) - 1.0) * (180.0 / .pi)
-    let h = CGFloat( base + t *  80)
-    let m = CGFloat(-base + t * -60)
+    let h = CGFloat( base + t *  30)
+    let m = CGFloat(-base + t * -20)
     return ClockConfig(hours: h, minutes: m)
 }
 
-/// Hour ripples outward from centre; minute ripples inward at a different speed.
-/// The two pulses travel through each other in opposite radial directions.
+/// Hour ripples outward from centre; minute ripples inward.
+/// The two pulses move through each other in opposite radial directions.
 private func patternRadialPulse(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
     let dist = sqrt(pow(Double(col) - 3.5, 2) + pow(Double(row) - 1.0, 2))
-    let h = CGFloat(t *  120 - dist * 45)
-    let m = CGFloat(t * -75  + dist * 60)
+    let h = CGFloat(t *  32 - dist * 18)
+    let m = CGFloat(t * -22 + dist * 24)
     return ClockConfig(hours: h, minutes: m)
 }
 
-/// Hour cascades along the main diagonal; minute cascades along the anti-diagonal.
-/// The crossing wavefronts give each clock a different opening angle.
+/// Hour cascades along the main diagonal; minute along the anti-diagonal.
+/// Crossing wavefronts give each clock a continuously changing opening angle.
 private func patternCascade(_ t: TimeInterval, _ row: Int, _ col: Int) -> ClockConfig {
-    let h = CGFloat(t *  100 + Double( col + row * 2) * 28)
-    let m = CGFloat(t * -70  + Double(col * 2 - row)  * 35)
+    let h = CGFloat(t *  28 + Double( col + row * 2) * 10)
+    let m = CGFloat(t * -18 + Double(col * 2 - row)  * 12)
     return ClockConfig(hours: h, minutes: m)
 }
 
