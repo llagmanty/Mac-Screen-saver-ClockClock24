@@ -38,9 +38,11 @@ Then double-click the file to install normally.
 
 A macOS screen saver inspired by the *ClockClock 24* kinetic sculpture by [Humans Since 1982](https://www.humanssince1982.com). Twenty-four analog clocks arranged in a 3 × 8 grid rotate their hands to display the current time in **HH:MM**, then break into continuous choreographed motion between updates.
 
-<br>
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/llagmanty)
+<div align="center">
+  <a href="https://www.buymeacoffee.com/llagmanty">
+    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
+  </a>
+</div>
 
 ---
 
