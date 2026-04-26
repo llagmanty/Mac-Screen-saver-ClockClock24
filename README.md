@@ -1,6 +1,6 @@
 # ClockClock24
 
-### [⬇ Download — ClockClock24 v2.2 Installer (.pkg)](https://github.com/llagmanty/Mac-Screen-saver-ClockClock24/raw/main/ClockClock24-2.2-Installer.pkg)
+### [⬇ Download — ClockClock24 v2.3 Installer (.pkg)](https://github.com/llagmanty/Mac-Screen-saver-ClockClock24/raw/main/ClockClock24-2.3-Installer.pkg)
 
 > macOS 13 or later · No admin password required · Installs in seconds
 > Signed & notarized by Apple — opens without any Gatekeeper warning
@@ -92,6 +92,11 @@ The project is a single Swift file ([ClockClock24View.swift](ClockClock24View.sw
 ---
 
 ## Changelog
+
+### v2.3
+- **Independent hands** — during choreography each hand follows its own path: different speeds, opposite directions, independent spatial phases
+- **Comfortable rotation speed** — reduced to 18–36 °/s (within the smooth-pursuit eye-tracking range); motion feels calm and satisfying rather than hectic
+- **Cleaner** — signature removed from the background
 
 ### v2.2
 - **Smooth choreography** — one pattern runs the full 40-second kinetic phase per cycle; no more mid-choreography hard cuts that caused visible jumps
