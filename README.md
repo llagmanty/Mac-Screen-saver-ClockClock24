@@ -3,36 +3,7 @@
 ### [⬇ Download — ClockClock24 v2.1 Installer (.pkg)](https://github.com/llagmanty/Mac-Screen-saver-ClockClock24/raw/main/ClockClock24-2.1-Installer.pkg)
 
 > macOS 13 or later · No admin password required · Installs in seconds
-
-<details>
-<summary>⚠️ macOS says the file "cannot be opened" or "could not be verified" — click here</summary>
-
-<br>
-
-This is expected. The installer is **not code-signed** with an Apple Developer certificate, so macOS Gatekeeper blocks it by default. The screensaver is open-source and safe — you can review every line in [`ClockClock24View.swift`](ClockClock24View.swift).
-
-**Option 1 — Right-click to open (easiest)**
-
-1. **Right-click** (or Control-click) the downloaded `.pkg` file
-2. Choose **Open** from the menu
-3. Click **Open** in the dialog that appears
-
-**Option 2 — Allow it in System Settings**
-
-1. Try to open the `.pkg` normally — macOS will block it
-2. Open **System Settings → Privacy & Security**
-3. Scroll down to the Security section — you will see *"ClockClock24 2.1 Installer.pkg was blocked"*
-4. Click **Open Anyway**
-
-**Option 3 — Terminal (one command)**
-
-```bash
-xattr -dr com.apple.quarantine ~/Downloads/ClockClock24-2.1-Installer.pkg
-```
-
-Then double-click the file to install normally.
-
-</details>
+> Signed & notarized by Apple — opens without any Gatekeeper warning
 
 ---
 
