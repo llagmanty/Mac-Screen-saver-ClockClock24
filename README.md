@@ -36,6 +36,10 @@ Then double-click the file to install normally.
 
 ---
 
+![ClockClock24 screenshot](assets/screenshot.png)
+
+---
+
 A macOS screen saver inspired by the *ClockClock 24* kinetic sculpture by [Humans Since 1982](https://www.humanssince1982.com). Twenty-four analog clocks arranged in a 3 × 8 grid rotate their hands to display the current time in **HH:MM**, then break into continuous choreographed motion between updates.
 
 <div align="center">
