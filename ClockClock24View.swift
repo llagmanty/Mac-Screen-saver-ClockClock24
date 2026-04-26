@@ -178,7 +178,6 @@ final class ClockClock24View: ScreenSaverView {
     private static let cycleDuration:     TimeInterval = 60
     private static let timeDisplayWindow: TimeInterval = 20  // 0–20 s: show time
     private static let timeAnimDuration:  TimeInterval = 1.5
-    private static let patternDuration:   TimeInterval = 10  // 40 s / 4 patterns
 
     private static let wallGradient = NSGradient(
         starting: NSColor(white: 0.92, alpha: 1),
@@ -191,10 +190,15 @@ final class ClockClock24View: ScreenSaverView {
     private var currentTimer: ClockTimer = currentTimeDigits()
 
     // Cycle state
-    private var timeOrigin:         TimeInterval = 0  // launch epoch for pattern functions
-    private var cycleStart:         TimeInterval = 0  // start of current 60 s cycle (relative)
-    private var timeDisplayApplied: Bool         = false
-    private var patternSequence:    [Int]        = Array(0..<kChoreographyPatterns.count).shuffled()
+    private var timeOrigin:           TimeInterval = 0     // launch epoch for pattern functions
+    private var cycleStart:           TimeInterval = 0     // start of current 60 s cycle (relative)
+    private var timeDisplayApplied:   Bool         = false
+    private var choreoPatternIndex:   Int          = 0     // one pattern for the full 40 s
+    // Per-clock angle offsets computed at the choreography entry point so hands
+    // begin exactly where the time-display animation left them — no jump.
+    private var choreoOffsetH: [[CGFloat]] = []
+    private var choreoOffsetM: [[CGFloat]] = []
+    private var choreoOffsetsReady:   Bool         = false
 
     // MARK: Initialization
 
@@ -268,13 +272,14 @@ final class ClockClock24View: ScreenSaverView {
         let now    = Date.timeIntervalSinceReferenceDate - timeOrigin
         var cycleT = now - cycleStart
 
-        // Cycle boundary: reset and pick a new random pattern order
+        // Cycle boundary: pick a new random pattern and clear the offset cache
         if cycleT >= Self.cycleDuration {
-            cycleStart         = now
-            cycleT             = 0
-            timeDisplayApplied = false
-            currentTimer       = currentTimeDigits()
-            patternSequence    = patternSequence.shuffled()
+            cycleStart           = now
+            cycleT               = 0
+            timeDisplayApplied   = false
+            choreoOffsetsReady   = false
+            currentTimer         = currentTimeDigits()
+            choreoPatternIndex   = Int.random(in: 0..<kChoreographyPatterns.count)
         }
 
         if cycleT < Self.timeDisplayWindow {
@@ -286,18 +291,38 @@ final class ClockClock24View: ScreenSaverView {
             for row in grid { row.forEach { $0.tick() } }
         } else {
             // ── Choreography phase (20–60 s) ────────────────────────────
-            let choreoT = cycleT - Self.timeDisplayWindow
-            driveChoreography(elapsed: now, choreoT: choreoT)
+            // On the very first choreography frame, snapshot the current hand
+            // angles and compute per-clock offsets so the pattern starts
+            // exactly where the time-display animation left off — no jump.
+            if !choreoOffsetsReady {
+                let fn = kChoreographyPatterns[choreoPatternIndex]
+                choreoOffsetH = (0..<Self.rows).map { r in
+                    (0..<Self.cols).map { c in
+                        grid[r][c].curH - fn(now, r, c).hours
+                    }
+                }
+                choreoOffsetM = (0..<Self.rows).map { r in
+                    (0..<Self.cols).map { c in
+                        grid[r][c].curM - fn(now, r, c).minutes
+                    }
+                }
+                choreoOffsetsReady = true
+            }
+            driveChoreography(elapsed: now)
         }
     }
 
-    /// Selects the active pattern and drives all 24 clocks directly at 60 fps.
-    private func driveChoreography(elapsed: TimeInterval, choreoT: TimeInterval) {
-        let slot = min(Int(choreoT / Self.patternDuration), patternSequence.count - 1)
-        let fn   = kChoreographyPatterns[patternSequence[slot]]
+    /// Drives all 24 clocks with the single active pattern, shifted by the
+    /// per-clock entry offsets so motion is continuous from the time display.
+    private func driveChoreography(elapsed: TimeInterval) {
+        let fn = kChoreographyPatterns[choreoPatternIndex]
         for r in 0..<Self.rows {
             for c in 0..<Self.cols {
-                grid[r][c].drive(fn(elapsed, r, c))
+                let raw = fn(elapsed, r, c)
+                grid[r][c].drive(ClockConfig(
+                    hours:   raw.hours   + choreoOffsetH[r][c],
+                    minutes: raw.minutes + choreoOffsetM[r][c]
+                ))
             }
         }
     }
@@ -765,8 +790,8 @@ final class ClockView: NSView {
 
     private var startH: CGFloat = HandPosition.deactivateBottomLeft.hours
     private var startM: CGFloat = HandPosition.deactivateBottomLeft.minutes
-    private var curH:   CGFloat = HandPosition.deactivateBottomLeft.hours
-    private var curM:   CGFloat = HandPosition.deactivateBottomLeft.minutes
+    fileprivate var curH: CGFloat = HandPosition.deactivateBottomLeft.hours
+    fileprivate var curM: CGFloat = HandPosition.deactivateBottomLeft.minutes
     private var dstH:   CGFloat = HandPosition.deactivateBottomLeft.hours
     private var dstM:   CGFloat = HandPosition.deactivateBottomLeft.minutes
     private var t0:     TimeInterval = 0
