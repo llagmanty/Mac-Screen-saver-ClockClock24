@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <installer-gui-script minSpecVersion="2">
 
-    <title>ClockClock24 2.1</title>
+    <title>ClockClock24 2.2</title>
     <organization>com.llagmanty</organization>
     <domains enable_currentUserHome="true" enable_localSystem="false"/>
     <options customize="never" require-scripts="false" hostArchitectures="arm64,x86_64"/>
@@ -11,7 +11,7 @@
     <readme     file="readme.html"  mime-type="text/html"/>
 
     <!-- Package reference -->
-    <pkg-ref id="com.llagmanty.ClockClock24" version="2.1">ClockClock24-component.pkg</pkg-ref>
+    <pkg-ref id="com.llagmanty.ClockClock24" version="2.2">ClockClock24-component.pkg</pkg-ref>
 
     <!-- Install choices -->
     <choices-outline>
