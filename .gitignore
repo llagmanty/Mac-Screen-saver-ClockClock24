@@ -14,9 +14,17 @@ DerivedData/
 # Internal dev tooling
 .github/copilot-instructions.md
 
-# Unsigned / superseded installers
+# Superseded installers (keep only the latest)
 ClockClock24-Installer.pkg
 ClockClock24-2.0-Installer.pkg
+ClockClock24-2.1-Installer.pkg
+
+# Pre-built .saver bundle (Xcode builds fresh from source)
+ClockClock24.saver/Contents/MacOS/
+ClockClock24.saver/Contents/Info.plist
+
+# VS Code workspace files
+.vscode/
 
 # Private keys and certificates
 *.p12
