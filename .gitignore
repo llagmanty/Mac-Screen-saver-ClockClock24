@@ -1,6 +1,7 @@
 # Xcode user-specific files
 *.xcuserstate
 xcuserdata/
+*.xcuserdatad/
 
 # Build products
 build/
@@ -8,3 +9,16 @@ DerivedData/
 
 # macOS system files
 .DS_Store
+**/.DS_Store
+
+# Internal dev tooling
+.github/copilot-instructions.md
+
+# Unsigned / superseded installers
+ClockClock24-Installer.pkg
+ClockClock24-2.0-Installer.pkg
+
+# Private keys and certificates
+*.p12
+*.key
+*.certSigningRequest

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>ClockClock24</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.ClockClock24</string>
+	<string>com.llagmanty.ClockClock24</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
