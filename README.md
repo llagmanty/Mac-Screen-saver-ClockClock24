@@ -1,5 +1,11 @@
 # ClockClock24
 
+### [⬇ Download — ClockClock24 v2.1 Installer (.pkg)](https://github.com/llagmanty/Mac-Screen-saver-ClockClock24/raw/main/ClockClock24-2.1-Installer.pkg)
+
+> macOS 13 or later · No admin password required · Installs in seconds
+
+---
+
 A macOS screen saver inspired by the *ClockClock 24* kinetic sculpture by [Humans Since 1982](https://www.humanssince1982.com). Twenty-four analog clocks arranged in a 3 × 8 grid rotate their hands to display the current time in **HH:MM**, then break into continuous choreographed motion between updates.
 
 <br>
